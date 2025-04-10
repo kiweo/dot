@@ -32,6 +32,11 @@ require("lazy").setup({
 	{ "tpope/vim-sleuth" },
 	{ "sbdchd/neoformat" },
 	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true, opts = {} },
+
+	-- lsp, treesitter & blink.cmp
+	{ "neovim/nvim-lspconfig", dependencies = { "saghen/blink.cmp" } },
+	{ "nvim-treesitter/nvim-treesitter" },
+	{ "saghen/blink.cmp", version = "1.*" },
 })
 
 --------------- PLUGINS CONFIG ---------------
@@ -49,6 +54,34 @@ require("fzf-lua").setup({
 	},
 })
 
+-- treesitter
+require("nvim-treesitter.configs").setup({
+	ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+	auto_install = true,
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
+})
+
+-- blink.cmp
+require("blink.cmp").setup({
+	keymap = { preset = "enter" },
+	completion = {
+		documentation = { auto_show = true },
+		menu = { draw = { columns = { { "label", "source_name", "kind", gap = 1 } } } },
+	},
+	fuzzy = { implementation = "prefer_rust_with_warning" },
+	cmdline = { completion = { menu = { auto_show = true } } },
+})
+
+-- lsp
+vim.diagnostic.config({ virtual_text = true })
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+require("lspconfig")["cssls"].setup({ capabilities = capabilities })
+require("lspconfig")["html"].setup({ capabilities = capabilities })
+require("lspconfig")["ts_ls"].setup({ capabilities = capabilities })
+
 --------------- KEYS ---------------
 
 -- fzf
@@ -59,6 +92,11 @@ vim.keymap.set("n", "<leader>h", ":FzfLua git_bcommits<CR>", { silent = true })
 
 -- neoformat
 vim.keymap.set("n", "<leader>i", ":Neoformat<CR>", { silent = true })
+
+-- lsp
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+vim.keymap.set("n", "K", vim.diagnostic.open_float)
 
 -- netrw
 vim.keymap.set("n", "-", ":Ex<CR>", { silent = true })
