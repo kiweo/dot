@@ -6,6 +6,7 @@ utils="wget curl jq ripgrep fd-find build-essential"
 sudo apt-get install -y $apps $utils
 
 # config
+mkdir -p ~/.config/nvim && cp init.lua ~/.config/nvim
 echo 'export EDITOR="nvim"; export VISUAL="nvim"' >> ~/.bashrc
 sudo ln -s $(which fdfind) /usr/local/bin/fd
 
