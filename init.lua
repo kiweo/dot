@@ -66,7 +66,11 @@ require("nvim-treesitter.configs").setup({
 
 -- blink.cmp
 require("blink.cmp").setup({
-	keymap = { preset = "enter" },
+	keymap = {
+		preset = "enter",
+		["<C-k>"] = { "select_prev", "fallback" },
+		["<C-j>"] = { "select_next", "fallback" },
+	},
 	completion = {
 		documentation = { auto_show = true },
 		menu = { draw = { columns = { { "label", "source_name", "kind", gap = 1 } } } },
