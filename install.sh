@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # packages
-apps="git tmux"
+apps="git tmux keepassxc"
 utils="wget curl jq ripgrep fd-find build-essential"
 sudo apt-get install -y $apps $utils
 
