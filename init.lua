@@ -81,10 +81,9 @@ require("blink.cmp").setup({
 
 -- lsp
 vim.diagnostic.config({ virtual_text = true })
-local capabilities = require("blink.cmp").get_lsp_capabilities()
-require("lspconfig")["cssls"].setup({ capabilities = capabilities })
-require("lspconfig")["html"].setup({ capabilities = capabilities })
-require("lspconfig")["ts_ls"].setup({ capabilities = capabilities })
+require("lspconfig")["cssls"].setup({})
+require("lspconfig")["html"].setup({})
+require("lspconfig")["ts_ls"].setup({})
 
 --------------- KEYS ---------------
 
