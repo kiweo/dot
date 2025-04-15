@@ -33,6 +33,9 @@ require("lazy").setup({
 	{ "sbdchd/neoformat" },
 	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true, opts = {} },
 
+	-- kulala
+	{ "mistweaverco/kulala.nvim", opts = { global_keymaps = true } },
+
 	-- lsp, treesitter & blink.cmp
 	{ "neovim/nvim-lspconfig", dependencies = { "saghen/blink.cmp" } },
 	{ "nvim-treesitter/nvim-treesitter" },
