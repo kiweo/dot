@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
 # packages
-apps="git tmux keepassxc"
+apps="git tmux irssi keepassxc"
 utils="wget curl jq ripgrep fd-find build-essential"
 sudo apt-get install -y $apps $utils
 
 # config
 mkdir -p ~/.config/nvim && cp init.lua ~/.config/nvim
 mkdir -p ~/.config/tmux && cp tmux.conf ~/.config/tmux
+mkdir ~/.irssi && cp config ~/.irssi
 echo 'export EDITOR="nvim"; export VISUAL="nvim"' >> ~/.bashrc
 sudo ln -s $(which fdfind) /usr/local/bin/fd
 
@@ -29,6 +30,10 @@ npm i -g http-server prettier @johnnymorganz/stylua-bin
 git config --global user.name "kiweo"
 git config --global user.email "206985760+kiweo@users.noreply.github.com"
 ssh-keygen -t ed25519 -C "206985760+kiweo@users.noreply.github.com" -f ~/.ssh/id_ed25519
+
+# libera
+read -s -p "libera password? " liberapassword
+sed -i "s|PASSWORD|$liberapassword|g" ~/.irssi/config
 
 # neovim
 wget https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz
