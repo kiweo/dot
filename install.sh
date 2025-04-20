@@ -3,6 +3,7 @@
 # packages
 apps="git tmux irssi keepassxc"
 utils="wget curl jq ripgrep fd-find build-essential"
+c="clang clangd clang-format gdb cmake bear"
 sudo apt-get install -y $apps $utils
 
 # config
