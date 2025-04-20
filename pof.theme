@@ -4,7 +4,7 @@ abstracts = {
   msgnick = "%n$0$1-:%n %|";
   pubnick = "%R$*%n";
   action_core = "%_%M * $*%n";
-  sb_background = "%z3c3836";
+  sb_background = "%N";
   prompt = "$* > ";
 };
 formats = {
