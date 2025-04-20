@@ -4,7 +4,7 @@
 apps="git tmux irssi keepassxc"
 utils="wget curl jq ripgrep fd-find build-essential"
 c="clang clangd clang-format gdb cmake bear"
-sudo apt-get install -y $apps $utils
+sudo apt-get install -y $apps $utils $c
 
 # config
 mkdir -p ~/.config/nvim && cp init.lua ~/.config/nvim
