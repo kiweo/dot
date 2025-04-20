@@ -1,0 +1,16 @@
+abstracts = {
+  timestamp = "%K$*";
+  channick_hilight = "%c$*%n"; #replace %C with %c
+  msgnick = "%n$0$1-:%n %|";
+  pubnick = "%R$*%n";
+  action_core = "%_%M * $*%n";
+  sb_background = "%z3c3836";
+  prompt = "$* > ";
+};
+formats = {
+  "fe-common/core" = {
+    join = "{channick_hilight $0} %_%G>>";
+    part = "{channick $0} %_%R<<";
+    quit = "{channick $0} %_%R<<< %_%K{reason $2}";
+  }
+}
