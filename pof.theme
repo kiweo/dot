@@ -1,6 +1,6 @@
 abstracts = {
   timestamp = "%K$*";
-  channick_hilight = "%c$*%n"; #replace %C with %c
+  channick_hilight = "%c$*%n";
   msgnick = "%n$0$1-:%n %|";
   pubnick = "%R$*%n";
   action_core = "%_%M * $*%n";
