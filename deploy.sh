@@ -7,9 +7,10 @@ utils="wget curl jq ripgrep fd-find build-essential"
 sudo apt-get install -y $apps $c $utils
 
 # config
-mkdir -p ~/.config/nvim && cp init.lua ~/.config/nvim
-mkdir -p ~/.config/tmux && cp tmux.conf ~/.config/tmux
-mkdir ~/.irssi && cp config pof.theme ~/.irssi
+mkdir -p ~/.config
+ln -s ~/dot/nvim ~/.config
+ln -s ~/dot/tmux ~/.config
+ln -s ~/dot/irssi ~/.irssi
 echo 'export EDITOR="nvim"; export VISUAL="nvim"' >> ~/.bashrc
 sudo ln -s $(which fdfind) /usr/local/bin/fd
 
