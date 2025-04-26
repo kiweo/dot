@@ -28,6 +28,13 @@ nvm i v22.14.0
 npm i -g npm@latest typescript typescript-language-server vscode-langservers-extracted
 npm i -g http-server prettier @johnnymorganz/stylua-bin
 
+# neovim
+wget https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz
+tar xzf nvim-linux-x86_64.tar.gz
+rm nvim-linux-x86_64.tar.gz
+sudo mv nvim-linux-x86_64 /opt/nvim
+sudo ln -s /opt/nvim/bin/nvim /usr/local/bin
+
 # git
 git config --global user.name "kiweo"
 git config --global user.email "206985760+kiweo@users.noreply.github.com"
@@ -36,11 +43,3 @@ ssh-keygen -t ed25519 -C "206985760+kiweo@users.noreply.github.com" -f ~/.ssh/id
 # libera
 read -s -p "libera password? " liberapassword
 sed -i "s|PASSWORD|$liberapassword|g" ~/.irssi/config
-
-# neovim
-wget https://github.com/neovim/neovim/releases/download/v0.11.0/nvim-linux-x86_64.tar.gz
-tar xzf nvim-linux-x86_64.tar.gz
-rm nvim-linux-x86_64.tar.gz
-sudo mv nvim-linux-x86_64 /opt/nvim
-sudo ln -s /opt/nvim/bin/nvim /usr/local/bin
-nvim
