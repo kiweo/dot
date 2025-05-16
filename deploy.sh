@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
 # packages
-apps="git tmux irssi keepassxc"
+apps="git tmux irssi keepassxc podman"
 c="clang clangd clang-format gdb cmake bear"
 utils="wget curl jq ripgrep fd-find build-essential"
 sudo apt-get install -y $apps $c $utils
 
 # config
-mkdir -p ~/.config
-ln -s ~/dot/nvim ~/.config
-ln -s ~/dot/tmux ~/.config
-ln -s ~/dot/irssi ~/.irssi
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/tmux
+mkdir ~/.irssi
+ln -s ~/dot/nvim/init.lua ~/.config/nvim && ln -s ~/dot/nvim/stylua.toml ~/.config/nvim
+ln -s ~/dot/tmux/tmux.conf ~/.config/tmux
+ln -s ~/dot/irssi/config ~/.irssi && ln -s ~/dot/irssi/pof.theme ~/.irssi
 echo 'export EDITOR="nvim"; export VISUAL="nvim"' >> ~/.bashrc
 sudo ln -s $(which fdfind) /usr/local/bin/fd
 
