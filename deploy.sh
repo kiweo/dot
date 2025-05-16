@@ -7,12 +7,10 @@ utils="wget curl jq ripgrep fd-find build-essential"
 sudo apt-get install -y $apps $c $utils
 
 # config
-mkdir -p ~/.config/nvim
-mkdir -p ~/.config/tmux
-mkdir ~/.irssi
-ln -s ~/dot/nvim/init.lua ~/.config/nvim && ln -s ~/dot/nvim/stylua.toml ~/.config/nvim
+mkdir -p ~/.config/{nvim,tmux} ~/.irssi
+ln -s ~/dot/nvim/{init.lua,stylua.toml} ~/.config/nvim
 ln -s ~/dot/tmux/tmux.conf ~/.config/tmux
-ln -s ~/dot/irssi/config ~/.irssi && ln -s ~/dot/irssi/pof.theme ~/.irssi
+ln -s ~/dot/irssi/{config,pof.theme} ~/.irssi
 echo 'export EDITOR="nvim"; export VISUAL="nvim"' >> ~/.bashrc
 sudo ln -s $(which fdfind) /usr/local/bin/fd
 
@@ -31,9 +29,7 @@ npm i -g npm@latest typescript typescript-language-server vscode-langservers-ext
 npm i -g http-server prettier @johnnymorganz/stylua-bin
 
 # neovim
-wget https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.tar.gz
-tar xzf nvim-linux-x86_64.tar.gz
-rm nvim-linux-x86_64.tar.gz
+wget -O- https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.tar.gz | tar xz
 sudo mv nvim-linux-x86_64 /opt/nvim
 sudo ln -s /opt/nvim/bin/nvim /usr/local/bin
 
