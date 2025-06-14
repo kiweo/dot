@@ -95,9 +95,9 @@ require("blink.cmp").setup({
 
 -- lsp
 vim.diagnostic.config({ virtual_text = true })
-require("lspconfig")["cssls"].setup({})
-require("lspconfig")["html"].setup({})
-require("lspconfig")["ts_ls"].setup({})
+vim.lsp.enable("cssls")
+vim.lsp.enable("html")
+vim.lsp.enable("ts_ls")
 
 --------------- KEYS ---------------
 
