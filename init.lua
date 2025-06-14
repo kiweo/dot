@@ -25,8 +25,9 @@ require("lazy").setup({
 	-- gruvbox
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 
-	-- fzf
+	-- fzf & oil
 	{ "ibhagwan/fzf-lua", opts = {} },
+	{ "stevearc/oil.nvim", opts = {}, lazy = false },
 
 	-- utils
 	{ "tpope/vim-sleuth" },
@@ -54,6 +55,16 @@ require("fzf-lua").setup({
 	keymap = {
 		builtin = { ["<C-d>"] = "preview-half-page-down", ["<C-u>"] = "preview-half-page-up" },
 		fzf = { ["ctrl-d"] = "preview-half-page-down", ["ctrl-u"] = "preview-half-page-up" },
+	},
+})
+
+-- oil
+require("oil").setup({
+	view_options = {
+		show_hidden = true,
+		is_always_hidden = function(name, bufnr)
+			return name == ".git" or name == "node_modules"
+		end,
 	},
 })
 
@@ -105,7 +116,7 @@ vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 vim.keymap.set("n", "K", vim.diagnostic.open_float)
 
 -- netrw
-vim.keymap.set("n", "-", ":Ex<CR>", { silent = true })
+vim.keymap.set("n", "-", ":Oil<CR>", { silent = true })
 
 --------------- SETS ---------------
 
@@ -121,4 +132,3 @@ vim.o.smartcase = true
 vim.o.swapfile = false
 vim.o.updatetime = 50
 vim.o.wrap = false
-vim.g.netrw_banner = false
