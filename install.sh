@@ -17,11 +17,10 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+\. "$HOME/.nvm/nvm.sh" # to use nvm without restarting shell
 
 # npm packages
-nvm i v22.16.0
+nvm i --lts
 npm i -g npm@latest typescript typescript-language-server vscode-langservers-extracted
 npm i -g http-server prettier @johnnymorganz/stylua-bin
 
