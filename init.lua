@@ -131,5 +131,4 @@ vim.o.signcolumn = "yes"
 vim.o.smartcase = true
 vim.o.swapfile = false
 vim.o.updatetime = 50
-vim.o.wrap = true
-vim.o.breakindent = true
+vim.o.wrap = false
