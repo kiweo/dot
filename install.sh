@@ -34,3 +34,8 @@ sudo ln -s /opt/nvim/bin/nvim /usr/local/bin
 git config --global user.name "kiweo"
 git config --global user.email "206985760+kiweo@users.noreply.github.com"
 ssh-keygen -t ed25519 -C "206985760+kiweo@users.noreply.github.com" -f ~/.ssh/id_ed25519
+
+# irssi
+read -s -p "libera password? " libera
+echo "export libera=\"$libera\"" >> ~/.bashrc
+echo "alias irssi='irssi --config <(sed \"s/PASSWORD/\$libera/g\" ~/.irssi/config)'" >> ~/.bashrc
