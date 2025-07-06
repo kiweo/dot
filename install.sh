@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
 # packages
-apps="git tmux keepassxc podman"
+apps="git tmux irssi keepassxc podman"
 utils="wget curl jq ripgrep fd-find build-essential"
 sudo apt-get install -y $apps $utils
 
 # config
 mkdir -p ~/.config/nvim && ln -s ~/dot/init.lua ~/.config/nvim
 mkdir -p ~/.config/tmux && ln -s ~/dot/tmux.conf ~/.config/tmux
+mkdir ~/.irssi && ln -s ~/dot/{config,irssi.theme} ~/.irssi
 echo 'export EDITOR="nvim"; export VISUAL="nvim"' >> ~/.bashrc
 sudo ln -s $(which fdfind) /usr/local/bin/fd
 
@@ -17,7 +18,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-\. "$HOME/.nvm/nvm.sh" # to use nvm without restarting shell
+\. "$HOME/.nvm/nvm.sh" # use nvm without restarting shell
 
 # npm packages
 nvm i --lts
