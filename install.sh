@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # packages
-apps="git tmux irssi keepassxc podman"
+apps="git tmux irssi keepassxc"
 c="clang clangd gdb cmake clang-format bear"
 utils="wget curl jq ripgrep fd-find build-essential"
 sudo apt-get install -y $apps $c $utils
