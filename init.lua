@@ -1,46 +1,28 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
---------------- LAZY ---------------
+--------------- PLUGINS ---------------
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
-end
-vim.opt.rtp:prepend(lazypath)
-
---------------- LAZY PLUGINS ---------------
-
-require("lazy").setup({
+vim.pack.add({
 	-- gruvbox
-	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
+	{ src = "https://github.com/ellisonleao/gruvbox.nvim" },
 
 	-- fzf & oil
-	{ "ibhagwan/fzf-lua", opts = {} },
-	{ "stevearc/oil.nvim", opts = {}, lazy = false },
+	{ src = "https://github.com/ibhagwan/fzf-lua" },
+	{ src = "https://github.com/stevearc/oil.nvim" },
 
 	-- utils
-	{ "tpope/vim-sleuth" },
-	{ "sbdchd/neoformat" },
-	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true, opts = {} },
+	{ src = "https://github.com/tpope/vim-sleuth" },
+	{ src = "https://github.com/sbdchd/neoformat" },
+	{ src = "https://github.com/windwp/nvim-autopairs" },
 
 	-- kulala
-	{ "mistweaverco/kulala.nvim", opts = { global_keymaps = true } },
+	{ src = "https://github.com/mistweaverco/kulala.nvim" },
 
 	-- lsp, treesitter & blink.cmp
-	{ "neovim/nvim-lspconfig", dependencies = { "saghen/blink.cmp" } },
-	{ "nvim-treesitter/nvim-treesitter" },
-	{ "saghen/blink.cmp", version = "1.*" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
 })
 
 --------------- PLUGINS CONFIG ---------------
@@ -77,6 +59,12 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = false,
 	},
 })
+
+-- autopairs
+require("nvim-autopairs").setup({})
+
+-- kulala
+require("kulala").setup({ global_keymaps = true })
 
 -- blink.cmp
 require("blink.cmp").setup({
