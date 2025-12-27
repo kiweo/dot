@@ -1,34 +1,27 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-# packages
-apps="git tmux podman keepassxc"
-utils="wget curl jq ripgrep fd-find build-essential"
-sudo apt-get install -y $apps $utils
+# homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# config
-mkdir -p ~/.config/nvim && ln -s ~/dot/init.lua ~/.config/nvim
-mkdir -p ~/.config/tmux && ln -s ~/dot/tmux.conf ~/.config/tmux
-echo 'export EDITOR="nvim"; export VISUAL="nvim"' >> ~/.bashrc
-sudo ln -s $(which fdfind) /usr/local/bin/fd
+# homebrew packages
+brew install git tmux fnm wget curl jq ripgrep fd fzf unzip
+brew install neovim --HEAD
+brew install --cask firefox keepassxc
 
-# fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --all
+# link configs
+mkdir -p ~/.config/nvim && ln -s ~/dot/init.lua ~/.config/nvim/init.lua
+mkdir -p ~/.config/tmux && ln -s ~/dot/tmux.conf ~/.config/tmux/tmux.conf
 
-# nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# setup fzf
+$(brew --prefix)/opt/fzf/install --all
+
+# setup fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # npm packages
-nvm i --lts
+fnm i --lts
 npm i -g npm@latest typescript typescript-language-server vscode-langservers-extracted
 npm i -g http-server prettier @johnnymorganz/stylua-bin
-
-# neovim
-wget -O- https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.tar.gz | tar xz
-sudo mv nvim-linux-x86_64 /opt/nvim
-sudo ln -s /opt/nvim/bin/nvim /usr/local/bin
 
 # git
 git config --global user.name "kiweo"
