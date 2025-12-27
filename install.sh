@@ -2,6 +2,7 @@
 
 # homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # homebrew packages
 brew install git tmux fnm wget curl jq ripgrep fd fzf unzip
@@ -15,11 +16,11 @@ mkdir -p ~/.config/tmux && ln -s ~/dot/tmux.conf ~/.config/tmux/tmux.conf
 # setup fzf
 $(brew --prefix)/opt/fzf/install --all
 
-# setup fnm
+# setup fnm & nodejs
 eval "$(fnm env --use-on-cd --shell zsh)"
+fnm i --lts
 
 # npm packages
-fnm i --lts
 npm i -g npm@latest typescript typescript-language-server vscode-langservers-extracted
 npm i -g http-server prettier @johnnymorganz/stylua-bin
 
