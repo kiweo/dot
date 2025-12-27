@@ -5,8 +5,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # homebrew packages
-brew install git tmux fnm wget curl jq ripgrep fd fzf unzip
-brew install neovim --HEAD
+brew install git tmux fnm wget jq ripgrep fd fzf
 brew install --cask firefox keepassxc
 
 # link configs
@@ -23,6 +22,11 @@ fnm i --lts
 # npm packages
 npm i -g npm@latest typescript typescript-language-server vscode-langservers-extracted
 npm i -g http-server prettier @johnnymorganz/stylua-bin
+
+# neovim
+wget -O- https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz | tar xz
+sudo mv nvim-macos-arm64 /opt/nvim
+sudo ln -s /opt/nvim/bin/nvim /usr/local/bin
 
 # git
 git config --global user.name "kiweo"
