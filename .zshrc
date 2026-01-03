@@ -11,3 +11,6 @@ export VISUAL='nvim'
 # looks
 export CLICOLOR=1
 PROMPT='%F{magenta}%~%f %(?.%F{yellow}.%F{red})❯%f '
+
+# force emacs mode
+bindkey -e
